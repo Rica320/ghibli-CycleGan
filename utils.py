@@ -12,7 +12,7 @@ def test(i,A,B,fake_A,fake_B):
     save_image(A*0.5+0.5,f"files/A{i}.png")
     save_image(B*0.5+0.5,f"files/B{i}.png")
     save_image(fake_A*0.5+0.5,f"files/fakeA{i}.png")
-    save_image(fake_B*0.5+0.5,f"files/fakeB{i}.png")  
+    save_image(fake_B*0.5+0.5,f"files/fakeB{i}.png")
 
 def train_epoch(disc_A, disc_B, gen_A, gen_B, loader, opt_disc,
         opt_gen, l1, mse, d_scaler, g_scaler,device):

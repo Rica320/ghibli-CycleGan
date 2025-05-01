@@ -3,3 +3,5 @@ venv/
 lbpcascade_animeface.xml
 google_scrapper.json
 __pycache__/
+files/
+files_2/

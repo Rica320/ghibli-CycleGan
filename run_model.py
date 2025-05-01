@@ -27,14 +27,20 @@ loader=DataLoader(dataset,batch_size=1,
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
+print(f"Using {device} device")
+print(torch.__version__)
+print(f"Devices available: {torch.cuda.device_count()}")
+for i in range(torch.cuda.device_count()):
+    print(f"Device {i}: {torch.cuda.get_device_name(i)}")
+
 disc_A = Discriminator().to(device)
 disc_B = Discriminator().to(device)
 weights_init(disc_A)
 weights_init(disc_B)
 
 
-gen_A = Generator(img_channels=3, num_residuals=9).to(device)
-gen_B = Generator(img_channels=3, num_residuals=9).to(device)
+gen_A = Generator(img_channels=3, num_residuals=16).to(device)
+gen_B = Generator(img_channels=3, num_residuals=16).to(device)
 weights_init(gen_A)
 weights_init(gen_B)
 
@@ -51,7 +57,7 @@ opt_gen = torch.optim.Adam(list(gen_A.parameters()) +
   list(gen_B.parameters()),lr=lr,betas=(0.5, 0.999))
 
 print("Starting training...")
-for epoch in range(1):
+for epoch in range(10):
     train_epoch(disc_A, disc_B, gen_A, gen_B, loader, opt_disc,
         opt_gen, l1, mse, d_scaler, g_scaler, device)
 
