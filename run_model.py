@@ -61,6 +61,6 @@ for epoch in range(10):
     train_epoch(disc_A, disc_B, gen_A, gen_B, loader, opt_disc,
         opt_gen, l1, mse, d_scaler, g_scaler, device)
 
-torch.save(gen_A.state_dict(), "files/gen_black.pth")
-torch.save(gen_B.state_dict(), "files/gen_blond.pth")
+torch.save(gen_A.state_dict(), "files/gen_real.pth")
+torch.save(gen_B.state_dict(), "files/gen_ghibili.pth")
 
