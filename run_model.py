@@ -39,8 +39,8 @@ weights_init(disc_A)
 weights_init(disc_B)
 
 
-gen_A = Generator(img_channels=3, num_residuals=16).to(device)
-gen_B = Generator(img_channels=3, num_residuals=16).to(device)
+gen_A = Generator(img_channels=3, num_residuals=9).to(device)
+gen_B = Generator(img_channels=3, num_residuals=9).to(device)
 weights_init(gen_A)
 weights_init(gen_B)
 
@@ -57,10 +57,9 @@ opt_gen = torch.optim.Adam(list(gen_A.parameters()) +
   list(gen_B.parameters()),lr=lr,betas=(0.5, 0.999))
 
 print("Starting training...")
-for epoch in range(10):
+for epoch in range(5):
     train_epoch(disc_A, disc_B, gen_A, gen_B, loader, opt_disc,
         opt_gen, l1, mse, d_scaler, g_scaler, device)
-
-torch.save(gen_A.state_dict(), "files/gen_real.pth")
-torch.save(gen_B.state_dict(), "files/gen_ghibili.pth")
+    torch.save(gen_A.state_dict(), f"files/gen_real{epoch}.pth")
+    torch.save(gen_B.state_dict(), f"files/gen_ghibili{epoch}.pth")
 
