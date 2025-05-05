@@ -3,8 +3,6 @@ venv/
 lbpcascade_animeface.xml
 google_scrapper.json
 __pycache__/
-files/
-files_2/
-files_3/
+files*/
 RicardoPic.jpg
 test_set/

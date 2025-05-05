@@ -57,9 +57,9 @@ opt_gen = torch.optim.Adam(list(gen_A.parameters()) +
   list(gen_B.parameters()),lr=lr,betas=(0.5, 0.999))
 
 print("Starting training...")
-for epoch in range(5):
+for epoch in range(1):
     train_epoch(disc_A, disc_B, gen_A, gen_B, loader, opt_disc,
         opt_gen, l1, mse, d_scaler, g_scaler, device)
-    torch.save(gen_A.state_dict(), f"files/gen_real{epoch}.pth")
-    torch.save(gen_B.state_dict(), f"files/gen_ghibili{epoch}.pth")
+torch.save(gen_A.state_dict(), f"files/gen_real{epoch}.pth")
+torch.save(gen_B.state_dict(), f"files/gen_ghibili{epoch}.pth")
 
